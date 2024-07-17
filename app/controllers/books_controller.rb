@@ -5,11 +5,13 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
+    @books = Book.all
     @user = current_user
   end
 
   def show
     @book = Book.new
+    @book_find = Book.find(params[:id])
   end
 
   def create
@@ -19,7 +21,23 @@ class BooksController < ApplicationController
     redirect_to book_path(@book.id)    # どのデータを詳細画面に表示させるかには、idが必要
   end
 
+  def edit
+     @book = Book.find(params[:id])
+  end
+
+   def update
+    book = Book.find(params[:id])
+    if book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
+      redirect_to book_path(book.id)
+      # フラッシュメッセージが表示されない＠？
+    end
+   end
+
   def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
   end
 
 

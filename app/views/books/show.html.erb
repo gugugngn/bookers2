@@ -1,1 +1,17 @@
 <h1>Book detail</h1>
+
+<table>
+
+ <tbody>
+   <tr>
+    <!--ここに投稿者のプロフィール画像と名前を表示させたい-->
+    <td><%= link_to @book_find.title,book_path %></td>
+    <td><%= @book_find.body %></td>
+    <td><%= link_to "Edit",edit_book_path %></td>
+    <td><% if @book_find.user_id == current_user %>
+      <%= link_to "削除", book_path, method: :delete , "data-confirm" => "本当に消しますか?" %>
+      <% end %></td>
+<!--削除機能が出てこない...-->
+   </tr>
+ </tbody>
+</table>
