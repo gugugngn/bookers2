@@ -1,17 +1,33 @@
-<h1>Book detail</h1>
-
-<table>
-
- <tbody>
-   <tr>
-    <!--ここに投稿者のプロフィール画像と名前を表示させたい-->
-    <td><%= link_to @book_find.title,book_path %></td>
-    <td><%= @book_find.body %></td>
-    <td><%= link_to "Edit",edit_book_path %></td>
-    <td><% if @book_find.user_id == current_user %>
-      <%= link_to "削除", book_path, method: :delete , "data-confirm" => "本当に消しますか?" %>
-      <% end %></td>
-<!--削除機能が出てこない...-->
-   </tr>
- </tbody>
-</table>
+  <main>
+    <div>
+      <%= flash[:notice] %>
+    </div>
+    <%= yield %>
+  </main>
+  
+  
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'list', user: @user, book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h1>Book detail</h1>
+      <table>
+       <tbody>
+        <tr>
+         <td><%= image_tag @book_find.user.get_profile_image(100,100) %><br>
+         <%= link_to @book_find.user.name, users_path(@book_find.user.id) %></td>
+        <!--ここに投稿者のプロフィール画像と名前を表示させたい-->
+        <td><%= link_to @book_find.title,book_path %></td>
+        <td><%= @book_find.body %></td>
+        <td><%= link_to "Edit",edit_book_path %></td>
+        <td><% if @book_find.user == current_user %>
+          <%= link_to "削除", book_path, method: :delete , "data-confirm" => "本当に消しますか?" %>
+          <% end %></td>
+       </tr>
+     </tbody>
+    </table>
+    </div>
+  </div>
+</div>
