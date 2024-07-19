@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def new
-    
+
   end
 
   def index
@@ -19,10 +19,11 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)  # book投稿データを受け取り新規登録するためのインスタンス(空箱)作成
     @book.user_id = current_user.id   # 今ログイン中のユーザの情報を本の投稿データに持たせている。
     if @book.save
-      flash.now[:notice] = "You have creatd book successfully."
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)    # どのデータを詳細画面に表示させるかには、idが必要
     else
-      flash.now[:notice] = "投稿に失敗しました。"
+      @books = Book.all
+      @user = current_user
       render :index
     end
   end
@@ -34,9 +35,10 @@ class BooksController < ApplicationController
    def update
     book = Book.find(params[:id])
     if book.update(book_params)
-      flash.now[:notice] = "You have updated book successfully."
-      redirect_to book_path(book.id)
-      # フラッシュメッセージが表示されない＠？
+       flash[:notice]= "You have updated book successfully."
+       redirect_to books_path
+    else
+      render :edit
     end
    end
 

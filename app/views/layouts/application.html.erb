@@ -19,51 +19,70 @@
         <div class="container">
 
           <div class="header-left">
-           <li class="nav-item">
+           <li class="nav-item mr-auto">
             <span><%= link_to "Bookers", root_path %></span>
-           </li>
           </div>
           <ul class="navbar-nav ml-auto">   <!--横並びになった-->
           <% if user_signed_in? %>
            <li class="nav-item">
-            <%= link_to "Home", user_path(current_user.id) %>
+            <%= link_to user_path(current_user.id), class:"icon" do %>    <!--link_to do の間はURLのみ！！-->
+            <i class="fa-solid fa-house icon"></i>Home
+            <% end %>
            </li>
            <li class="nav-item">
-            <%= link_to "Users", users_path %>
+            <%= link_to users_path, class:"icon" do  %>
+            <i class="fa-solid fa-users icon"></i>Users
+            <% end %>
            </li>
             <li class="nav-item">
-           <%= link_to "Books", books_path %>
+           <%= link_to  books_path, class:"icon" do %>
+            <i class="fa-solid fa-book-open icon"></i>Books
+            <% end %>
            </li>
            <li class="nav-item">
-             <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+             <%= link_to destroy_user_session_path,  method: :delete do%>
+            <i class="fa-solid fa-right-from-bracket icon"></i>Log out
+            <% end %>
            </li>
+
           <% else %>
            <li class="nav-item">
-             <%= link_to "Home", root_path %>
+             <%= link_to root_path class:"icon" do%>
+           <i class="fa-solid fa-house icon"></i>Home
+            <% end %>
            </li>
            <li class="nav-item">
-             <%= link_to "about", about_path %>
+              <%= link_to  about_path class:"icon" do%>
+             <i class="fa-solid fa-link icon"></i>About
+             <% end %>
            </li>
            <li class="nav-item">
-             <%= link_to "Sign up", new_user_registration_path %>
+              <%= link_to new_user_registration_path  class:"icon" do %>
+             <i class="fa-solid fa-user-plus icon"></i>Sign up
+             <% end %>
            </li>
            <li class="nav-item">
-             <%= link_to "Log in", new_user_session_path %>
+             <%= link_to new_user_session_path do %>
+             <i class="fa-solid fa-right-to-bracket"></i>Log in
+             <% end %>
            </li>
           <% end %>
           </ul>
         </header>
-      
+
   </body>
+    <div>
+      <%= flash[:notice] %>
+    </div>
     <%= yield %>
 
     <footer>
      <div class='container'>
-    	<div class='row justify-content-center'>
+    	<div class='row justify-content-center py-5'>
         	<h6>CopyRight Infratop.inc</h6>
     	</div>
      </div>
     </footer>
-  
+
   </div>
 </html>

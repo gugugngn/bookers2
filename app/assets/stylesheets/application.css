@@ -19,7 +19,11 @@
   box-sizing: border-box;
 }
 
-  
+.body-text-small{
+  font-size: 20px;
+}
+
+  /*ヘッダー*/
 .nav-item {
   list-style-type: none;
   font-size: 30px;
@@ -31,3 +35,32 @@
   color: white;
 }
 
+.icon{
+  color: white;
+}
+
+/*ボディ*/
+
+.sign_up {
+  background-color: #008000;
+}
+
+table th{
+  border-top: 1px solid silver;
+  padding: 10px;
+  padding-right: 100px;
+  vertical-align: top;
+}
+
+.top-btn-text a{
+  color: white;
+}
+
+
+.icon-car{
+  color: #999999;
+}
+
+.setting{
+  width: 70%;
+}
