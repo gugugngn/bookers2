@@ -12,7 +12,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <!--↑AIにcssと繋ぐ方法を教えてもらった結果-->
   </head>
-
+ <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -20,7 +20,7 @@
           <div class="header-left">
            <li class="nav-item mr-auto">
             <span><%= link_to "Bookers", root_path %></span>
-          </div>
+           </div>
           <ul class="navbar-nav ml-auto">   <!--横並びになった-->
           <% if user_signed_in? %>
            <li class="nav-item">
@@ -67,13 +67,15 @@
            </li>
           <% end %>
           </ul>
+         </div>
         </header>
 
-  </body>
+    <main>
     <div>
       <%= flash[:notice] %>
     </div>
     <%= yield %>
+    </main>
 
     <footer>
      <div class='container'>
@@ -83,5 +85,5 @@
      </div>
     </footer>
 
-  
+  </body>
 </html>

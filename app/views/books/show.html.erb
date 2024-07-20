@@ -1,23 +1,45 @@
 
-<div class="container-fluid">
-  <div class="row justify-content-center">
+<div class="container px-5 px-sm-0">
+  <div class="row">
     <div class="col-md-3">
-      <%= render 'list', user: @user, book: @book %>
+     <main>
+      <h1 class="pt-3">User info</h1>
+        <div class = "body-text-small">
+         <%= image_tag @book_find.user.get_profile_image(100,100) %>
+         <table>
+          <tr><th>name <th><%= @book_find.user.name %></th></th></tr>
+          <tr><th>introduction <%= @book_find.user.introduction %><th></tr>
+         </table>
+          <%= link_to edit_user_path(@book_find.user.id), class:"icon-setting" do%>
+           <div class = "btn btn-outline-secondary setting">
+           <i class="fa-solid fa-user-gear "></i></div>
+          <% end %>
+
+      <h1>New book</h1>
+      <%= form_with model: @book do|f| %>
+       <h4>Title</h4>
+       <%= f.text_field :title %>
+       <h4>Opinion</h4>
+       <%= f.text_area :body %>
+　     <p><%= f.submit 'Create Book', class: "btn btn-success" %></p>
+      <% end %>
+      </main>
     </div>
-    <div class="col-6 offset-1">
+
+    <div class="col-md-8 offset-md-1">
       <h1 class="pt-3">Book detail</h1>
       <div class = "body-text-small">
+
       <table>
        <tbody>
         <tr>
          <th><%= image_tag @book_find.user.get_profile_image(100,100) %><br>
-         <%= link_to @book_find.user.name, users_path(@book_find.user.id) %></th>
-        <!--ここに投稿者のプロフィール画像と名前を表示させたい-->
+         <%= link_to @book_find.user.name, user_path(@book_find.user.id) %></th>
         <th><%= link_to @book_find.title,book_path %></th>
         <th><%= @book_find.body %></th>
         <th><% if @book_find.user == current_user %>
-        <th><%= link_to "Edit",edit_book_path %></th>
-        <th><%= link_to "削除", books_path, method: :delete , "data-confirm" => "本当に消しますか?" %></th>
+        <th><%= link_to "Edit",edit_book_path,class:"btn btn-success"%></th>
+        <th><%= link_to "Destroy", book_path(@book_find.id), method: :delete , "data-confirm" => "本当に消しますか?",class:"btn btn-danger" %></th>
           <% end %></th>
        </tr>
      </tbody>
@@ -26,3 +48,4 @@
     </div>
   </div>
 </div>
+  </div>

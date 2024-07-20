@@ -38,6 +38,12 @@
 .icon{
   color: white;
 }
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
 
 /*ボディ*/
 
@@ -61,10 +67,10 @@ table th{
 }
 
 
-.icon-car{
+.icon-setting{
   color: #999999;
 }
 
 .setting{
-  width: 70%;
+  width: 100%;
 }
