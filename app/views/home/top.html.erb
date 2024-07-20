@@ -11,15 +11,19 @@
    </div>
   </div>
   
-  <div class="btn-wrapper col-10 mx-auto">
+   <div class="btn-wrapper col-10 mx-auto">
    <div class="row">
-    <div class= "btn btn-info btn-block mb-3 sign_in" >
-    <%= link_to new_user_session_path,class:"icon" do %>Log in</div><% end %>
+    <div class="top-btn">
+    <%= link_to new_user_session_path,class:"icon" do %>
+    <div class= "btn btn-info btn-block mb-3 sign_in">Log in</div><% end %>
+    </div>
    </div>
    
     <div class="row">
-    <div class= "btn btn-info btn-block mb-3 sign_up" >
-    <%= link_to  new_user_registration_path,class:"icon" do  %>Sign up</div><% end %>
+     <div class="top-btn">
+    <%= link_to  new_user_registration_path,class:"icon" do  %>
+    <div class= "btn btn-info btn-block mb-3 sign_up" >Sign up</div><% end %>
+    </div>
    </div>
   </div>
   </div>

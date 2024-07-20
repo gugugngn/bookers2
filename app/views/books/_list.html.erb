@@ -1,16 +1,15 @@
-
-<p></p>
-<h1>User info</h1>
+<main>
+<h1 class="pt-3">User info</h1>
 <div class = "body-text-small">
   <%= image_tag user.get_profile_image(100,100) %>
   <table>
-    <tr><th><strong>name </strong></th><th><%= user.name %></th></tr>
-    <tr><th><strong>introduction </strong><%= user.introduction %></p><th></th></th>
+    <tr><th>name <th><%= user.name %></th></th></tr>
+    <tr><th>introduction <%= user.introduction %><th></tr>
   </table>
-   <p><%= link_to edit_user_path(user.id), class:"icon-car" do%>
+    <%= link_to edit_user_path(user.id), class:"icon-car" do%>
     <div class = "btn btn-outline-secondary setting">
-    <i class="fa-solid fa-user-gear "></i>
-    <% end %></div></p>
+    <i class="fa-solid fa-user-gear "></i></div>
+    <% end %>
 </div>
 
 <h1>New book</h1>
@@ -23,3 +22,4 @@
    
 　 <p><%= f.submit 'Create Book', class: "btn btn-success" %></p>
   <% end %>
+</main>

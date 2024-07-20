@@ -15,12 +15,16 @@ class BooksController < ApplicationController
     @book_find = Book.find(params[:id])
   end
 
+  def edit
+     @book = Book.find(params[:id])
+  end
+
   def create
     @book = Book.new(book_params)  # book投稿データを受け取り新規登録するためのインスタンス(空箱)作成
     @book.user_id = current_user.id   # 今ログイン中のユーザの情報を本の投稿データに持たせている。
     if @book.save
       flash[:notice] = "You have created book successfully."
-      redirect_to book_path(@book.id)    # どのデータを詳細画面に表示させるかには、idが必要
+      redirect_to book_path(@book)    # どのデータを詳細画面に表示させるかには、idが必要
     else
       @books = Book.all
       @user = current_user
@@ -28,15 +32,11 @@ class BooksController < ApplicationController
     end
   end
 
-  def edit
-     @book = Book.find(params[:id])
-  end
-
    def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
        flash[:notice]= "You have updated book successfully."
-       redirect_to books_path
+       redirect_to book_path(@book)
     else
       render :edit
     end

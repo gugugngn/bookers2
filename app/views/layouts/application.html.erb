@@ -13,7 +13,6 @@
     <!--↑AIにcssと繋ぐ方法を教えてもらった結果-->
   </head>
 
-  <body class="d-flex flex-column vh-100">
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -47,17 +46,17 @@
 
           <% else %>
            <li class="nav-item">
-             <%= link_to root_path class:"icon" do%>
+             <%= link_to root_path, class:"icon" do%>
            <i class="fa-solid fa-house icon"></i>Home
             <% end %>
            </li>
            <li class="nav-item">
-              <%= link_to  about_path class:"icon" do%>
+              <%= link_to about_path, class:"icon" do%>
              <i class="fa-solid fa-link icon"></i>About
              <% end %>
            </li>
            <li class="nav-item">
-              <%= link_to new_user_registration_path  class:"icon" do %>
+              <%= link_to new_user_registration_path,  class:"icon" do %>
              <i class="fa-solid fa-user-plus icon"></i>Sign up
              <% end %>
            </li>
@@ -84,5 +83,5 @@
      </div>
     </footer>
 
-  </div>
+  
 </html>
